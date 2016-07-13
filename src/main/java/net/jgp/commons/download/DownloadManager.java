@@ -1,4 +1,4 @@
-package net.jgp.downloadproxy;
+package net.jgp.commons.download;
 
 import java.io.File;
 import java.io.FileNotFoundException;
