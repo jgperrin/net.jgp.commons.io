@@ -14,6 +14,10 @@ import net.jgp.commons.crypto.MD5;
 public class DownloadManager {
 
 	public static String getFilename(String url) {
+		return download0(url, null);
+	}
+
+	private static String download0(String url, String fileName) {
 		URL website;
 		try {
 			website = new URL(url);
@@ -31,8 +35,13 @@ public class DownloadManager {
 			return null;
 		}
 		FileOutputStream fos;
-		String fileName = MD5.digest(url);
-		File f = new File("/Volumes/Pool/" + fileName + ".dl");
+		File f;
+		if (fileName == null) {
+			fileName = MD5.digest(url);
+			f = new File("/Volumes/Pool/" + fileName + ".dl");
+		} else {
+			f = new File(fileName);
+		}
 		try {
 			fos = new FileOutputStream(f);
 		} catch (FileNotFoundException e) {
@@ -49,6 +58,10 @@ public class DownloadManager {
 		}
 
 		return fileName + ".dl";
+	}
+
+	public static String dowloadUrlAsFilename(String url, String fileName) {
+		return download0(url, fileName);
 	}
 
 }
