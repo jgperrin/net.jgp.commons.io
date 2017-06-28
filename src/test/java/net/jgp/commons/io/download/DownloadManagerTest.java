@@ -1,10 +1,12 @@
-package net.jgp.commons.download;
+package net.jgp.commons.io.download;
 
 import static org.junit.Assert.*;
 
 import java.io.File;
 
 import org.junit.Test;
+
+import net.jgp.commons.io.download.DownloadManager;
 
 public class DownloadManagerTest {
 
@@ -18,7 +20,7 @@ public class DownloadManagerTest {
 
 	@Test
 	public void testBigFile() {
-		String f = DownloadManager.getFilename("https://opendurham.nc.gov/explore/dataset/north-carolina-school-performance-data/download/?format=json&timezone=America/New_York");
+		String f = DownloadManager.getFilename("http://opendurham.nc.gov/explore/dataset/north-carolina-school-performance-data/download/?format=json&timezone=America/New_York");
 		if (f == null) {
 			assert (false);
 		}
