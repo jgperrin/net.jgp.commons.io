@@ -9,6 +9,8 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
+import org.apache.commons.io.FileUtils;
+
 import net.jgp.commons.crypto.MD5;
 import net.jgp.commons.log.Logger;
 import net.jgp.commons.log.LoggerFactory;
@@ -25,16 +27,10 @@ public class DownloadManager {
 		try {
 			website = new URL(url);
 		} catch (MalformedURLException e) {
-			log.error("Error: {}, could not download file", e.getMessage(), e);
+			log.error("Error: {}, URL is not valid", e.getMessage(), e);
 			return null;
 		}
-		ReadableByteChannel rbc;
-		try {
-			rbc = Channels.newChannel(website.openStream());
-		} catch (IOException e) {
-			log.error("Error: {}, could not download file", e.getMessage(), e);
-			return null;
-		}
+
 		FileOutputStream fos;
 		File f;
 		if (fileName == null) {
@@ -43,28 +39,14 @@ public class DownloadManager {
 		} else {
 			f = new File(fileName);
 		}
+
 		try {
-			fos = new FileOutputStream(f);
-		} catch (FileNotFoundException e) {
-			log.error("File {} not found: {}", f.getName(), e.getMessage(), e);
+			FileUtils.copyURLToFile(website, f);
+		} catch (IOException e) {
+			log.error("Error: {}, could not download file", e.getMessage(), e);
 			return null;
 		}
-		try {
-			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-		} catch (IOException e) {
-			log.error("I/O exception while copying from stream: {}", e.getMessage(), e);
-			return null;
-		}
-		try {
-			fos.close();
-		} catch (IOException e) {
-			log.warning("I/O exception while cloing file {} not found: {}", f.getName(), e.getMessage(), e);
-		}
-		try {
-			rbc.close();
-		} catch (IOException e) {
-			log.warning("I/O exception while cloing the stream from stream: {}", e.getMessage(), e);
-		}
+
 		return fileName + ".dl";
 	}
 
