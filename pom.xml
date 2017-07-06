@@ -3,19 +3,19 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.jgp</groupId>
 	<artifactId>commons-io</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>net.jgp</groupId>
 			<artifactId>commons-crypto</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>net.jgp</groupId>
 			<artifactId>commons-log</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
