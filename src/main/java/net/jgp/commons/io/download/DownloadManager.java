@@ -1,13 +1,9 @@
 package net.jgp.commons.io.download;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 
 import org.apache.commons.io.FileUtils;
 
@@ -31,7 +27,6 @@ public class DownloadManager {
 			return null;
 		}
 
-		FileOutputStream fos;
 		File f;
 		if (fileName == null) {
 			fileName = MD5.digest(url);
