@@ -11,7 +11,7 @@
 			<artifactId>commons-crypto</artifactId>
 			<version>1.0.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>net.jgp</groupId>
 			<artifactId>commons-log</artifactId>
@@ -23,7 +23,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- Apache Commons I/O -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -51,5 +51,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>
